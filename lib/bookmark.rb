@@ -5,5 +5,7 @@ class Bookmark
   end
 
   def self.all
+    ["https://www.google.com/"]
   end
+
 end
