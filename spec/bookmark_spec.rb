@@ -8,9 +8,17 @@ describe Bookmark do
     end
   end
 
-  describe '.self' do
-    it 'returns an array of all the bookmarks' do
-      expect(Bookmark.all).to eq ["https://www.google.com/"]
+  describe '.all' do
+    it 'returns a list of all the bookmarks' do
+      connection = PG.connect(dbname: 'bookmark_manager_test')
+
+      connection.exec("INSERT INTO bookmarks (url) VALUES ('http://www.makersacademy.com');")
+      connection.exec("INSERT INTO bookmarks (url) VALUES('http://www.destroyallsoftware.com');")
+      connection.exec("INSERT INTO bookmarks (url) VALUES('http://www.google.com');")
+      
+      expect(Bookmark.all).to include "http://www.google.com"
+      expect(Bookmark.all).to include "http://www.destroyallsoftware.com"
+      expect(Bookmark.all).to include "http://www.makersacademy.com"
     end
   end
 end
