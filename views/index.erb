@@ -1,4 +1,9 @@
 <h1> Here are your bookmarks </h1>
 <form method='get' action='/bookmarks'>
-  <button type="sumbit">Click Me!</button>
+  <button type="submit">Click Me!</button>
+</form>
+
+<form action='/bookmarks' method='post'>
+  Enter URL:<input type="text" placeholder="Enter Url" name="add" required>
+  <button type="submit" value=create>Create Bookmark!</button>
 </form>
